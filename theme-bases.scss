@@ -19,24 +19,24 @@ mat.$theme-ignore-duplication-warnings: true;
     @include common.common();
 }
 
-$blui-blue-primary: mat.define-palette(blui.$blui-blue);
-$blui-blue-accent: mat.define-palette(blui.$blui-lightBlue);
-$blui-blue-warn: mat.define-palette(blui.$blui-red);
+$blui-blue-primary: mat.m2-define-palette(blui.$blui-blue);
+$blui-blue-accent: mat.m2-define-palette(blui.$blui-lightBlue);
+$blui-blue-warn: mat.m2-define-palette(blui.$blui-red);
 
-$typography-config: mat.define-legacy-typography-config(
+$typography-config: mat.m2-define-legacy-typography-config(
     $font-family: '"Open Sans", Arial, Helvetica, sans-serif',
-    $display-4: mat.define-typography-level(6rem, 1.167, 300),
-    $display-2: mat.define-typography-level(3rem, 1.167, 400),
-    $display-1: mat.define-typography-level(2.125rem, 1.235, 400),
-    $headline: mat.define-typography-level(1.5rem, 1.334, 400),
-    $title: mat.define-typography-level(1.25rem, 1.6, 600),
-    $subheading-2: mat.define-typography-level(1rem, 1.75, 400),
-    $subheading-1: mat.define-typography-level(0.875rem, 1.57, 600),
-    $body-2: mat.define-typography-level(0.875rem, 1.43, 500),
-    $body-1: mat.define-typography-level(1rem, 1.5, 400),
-    $caption: mat.define-typography-level(0.75rem, 1.66, 400),
-    $button: mat.define-typography-level(0.875rem, 1, 600),
-    $input: mat.define-typography-level(inherit, 1.125, 400),
+    $display-4: mat.m2-define-typography-level(6rem, 1.167, 300),
+    $display-2: mat.m2-define-typography-level(3rem, 1.167, 400),
+    $display-1: mat.m2-define-typography-level(2.125rem, 1.235, 400),
+    $headline: mat.m2-define-typography-level(1.5rem, 1.334, 400),
+    $title: mat.m2-define-typography-level(1.25rem, 1.6, 600),
+    $subheading-2: mat.m2-define-typography-level(1rem, 1.75, 400),
+    $subheading-1: mat.m2-define-typography-level(0.875rem, 1.57, 600),
+    $body-2: mat.m2-define-typography-level(0.875rem, 1.43, 500),
+    $body-1: mat.m2-define-typography-level(1rem, 1.5, 400),
+    $caption: mat.m2-define-typography-level(0.75rem, 1.66, 400),
+    $button: mat.m2-define-typography-level(0.875rem, 1, 600),
+    $input: mat.m2-define-typography-level(inherit, 1.125, 400),
 );
 
 @function blui-light-theme($primary, $accent, $warn) {
@@ -51,7 +51,7 @@ $typography-config: mat.define-legacy-typography-config(
     );
 
     @return map.deep-merge(
-        mat.define-light-theme($theme),
+        mat.m2-define-light-theme($theme),
         (
             color: (
                 foreground: (
@@ -86,7 +86,7 @@ $typography-config: mat.define-legacy-typography-config(
     $theme: blui-light-theme($primary, $accent, $warn);
     @include sharedConfig();
 
-    @include mat.all-legacy-component-themes($theme);
+    @include mat.all-component-themes($theme);
     @include blui-component-theme.blui-components-theme($theme);
     @include blueTheme.bluetheme($theme);
 }
@@ -96,9 +96,9 @@ $typography-config: mat.define-legacy-typography-config(
     @include light-theme($blui-blue-primary, $blui-blue-accent, $blui-blue-warn);
 }
 
-$blui-blue-dark-primary: mat.define-palette(blui.$blui-blue);
-$blui-blue-dark-accent: mat.define-palette(blui.$blui-lightBlue, 200);
-$blui-blue-dark-warn: mat.define-palette(blui.$blui-red, 200);
+$blui-blue-dark-primary: mat.m2-define-palette(blui.$blui-blue);
+$blui-blue-dark-accent: mat.m2-define-palette(blui.$blui-lightBlue, 200);
+$blui-blue-dark-warn: mat.m2-define-palette(blui.$blui-red, 200);
 
 @function blui-dark-theme($primary, $accent, $warn) {
     $theme: (
@@ -112,7 +112,7 @@ $blui-blue-dark-warn: mat.define-palette(blui.$blui-red, 200);
     );
 
     @return map.deep-merge(
-        mat.define-dark-theme($theme),
+        mat.m2-define-dark-theme($theme),
         (
             color: (
                 foreground: (
@@ -146,7 +146,7 @@ $blui-blue-dark-warn: mat.define-palette(blui.$blui-red, 200);
     $theme: blui-dark-theme($primary, $accent, $warn);
     @include sharedConfig();
 
-    @include mat.all-legacy-component-themes($theme);
+    @include mat.all-component-themes($theme);
 
     @include blui-component-theme.blui-components-theme($theme);
     @include darkTheme.darktheme($theme);
@@ -158,6 +158,6 @@ $blui-blue-dark-warn: mat.define-palette(blui.$blui-red, 200);
 }
 
 @mixin shared() {
-    @include mat.legacy-typography-hierarchy($typography-config);
-    @include mat.legacy-core();
+    @include mat.typography-hierarchy($typography-config);
+    @include mat.core();
 }
